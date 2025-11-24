@@ -9,442 +9,892 @@
       --primary: #111827;
       --accent: #22c55e;
       --bg: #f9fafb;
-      --text: #0f172a;
+      --text: #111827;
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: "Tahoma", "Segoe UI", system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
       scroll-behavior: smooth;
     }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     header {
       position: sticky;
       top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.9);
+      z-index: 100;
+      background: #ffffffdd;
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e5e7eb;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
     }
+
     .container {
-      width: min(1200px, 90vw);
+      max-width: 1100px;
       margin: 0 auto;
+      padding: 0 1.5rem;
     }
-    .navbar {
+
+    nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 0;
-      gap: 18px;
-    }
-    .logo-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      padding: 0.75rem 0;
       position: relative;
-      min-height: 36px;
     }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+
     .logo-img {
-      width: 130px;
-      height: 36px;
-      object-fit: contain;
+      height: 32px;
+      width: auto;
+      display: block;
     }
+
     .logo-fallback {
       display: none;
-      font-weight: 700;
-      color: var(--primary);
-      font-size: 18px;
     }
-    nav {
-      display: none;
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
       align-items: center;
-      gap: 18px;
-      font-size: 14px;
-      flex-wrap: wrap;
+      font-size: 0.95rem;
     }
+
+    .nav-links a {
+      opacity: 0.8;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      border-radius: 999px;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 600;
       border: 1px solid transparent;
       cursor: pointer;
+      transition: 0.2s ease;
+      white-space: nowrap;
     }
+
     .btn-primary {
-      background: var(--primary);
+      background: var(--accent);
       color: #fff;
-      box-shadow: 0 10px 30px rgba(17, 24, 39, 0.15);
+      box-shadow: 0 10px 20px rgba(34, 197, 94, 0.25);
     }
-    .btn-primary:hover { transform: translateY(-2px); }
-    .btn-secondary {
-      background: #fff;
-      border-color: #e5e7eb;
-      color: var(--primary);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(34, 197, 94, 0.35);
     }
-    .btn-secondary:hover { transform: translateY(-2px); }
+
+    .btn-outline {
+      border-color: rgba(15, 23, 42, 0.15);
+      background: #ffffff;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid rgba(15, 23, 42, 0.15);
+      background: #ffffff;
+      border-radius: 999px;
+      padding: 0.3rem 0.7rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    #top {
+      scroll-margin-top: 80px;
+    }
+
     .hero {
+      padding: 3rem 0 3.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        padding: 4rem 0 4.5rem;
+      }
+    }
+
+    .hero-grid {
       display: grid;
       grid-template-columns: 1fr;
+      gap: 2rem;
       align-items: center;
-      gap: 32px;
-      padding: 48px 0 36px;
     }
-    .hero h1 {
-      font-size: 26px;
-      margin: 0 0 12px;
+
+    @media (min-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1.1fr 1fr;
+      }
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      color: #6b7280;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin: 0 0 1rem;
       color: var(--primary);
-      line-height: 1.3;
     }
-    .hero p.lead {
-      margin: 0 0 16px;
-      font-size: 16px;
+
+    @media (min-width: 900px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: #4b5563;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.75rem;
+    }
+
+    .hero-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: #374151;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-bullets span.check {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-top: 0.15rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-badge {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .mockup {
+      background: #ffffff;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+    }
+
+    .mockup-header {
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #e5e7eb, #f3f4f6);
+      margin-bottom: 1rem;
+    }
+
+    .mockup-body {
+      border-radius: 1rem;
+      border: 1px dashed rgba(15, 23, 42, 0.15);
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .mockup-pill {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: rgba(34, 197, 94, 0.08);
+      color: #166534;
+      margin-bottom: 0.5rem;
+    }
+
+    .mockup-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .mockup-text {
+      font-size: 0.85rem;
       color: #4b5563;
     }
-    .bullets { list-style: none; padding: 0; margin: 0 0 20px; }
-    .bullets li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-    .bullet-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--accent);
-      border-radius: 50%;
-      flex-shrink: 0;
+
+    .section {
+      padding: 2.5rem 0;
     }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-    .trust { margin-top: 10px; font-size: 13px; color: #6b7280; }
-    .mockup-card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-      text-align: center;
-    }
-    .mockup-placeholder {
-      background: linear-gradient(135deg, #f1f5f9, #e5e7eb);
-      border-radius: 12px;
-      height: 240px;
-      display: grid;
-      place-items: center;
-      color: #475569;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-    section { padding: 52px 0; }
-    .section-title { margin: 0 0 18px; font-size: 24px; color: var(--primary); }
-    .section-desc { margin: 0 0 24px; color: #4b5563; }
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    .card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .card:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,0.08); }
-    .icon-circle {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #ecfdf3;
-      display: grid;
-      place-items: center;
-      color: var(--accent);
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .inside-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      align-items: start;
-    }
-    .checklist { list-style: none; padding: 0; margin: 0; }
-    .checklist li { margin-bottom: 12px; padding: 10px 12px; background: #fff; border-radius: 10px; border: 1px solid #e5e7eb; box-shadow: 0 6px 18px rgba(0,0,0,0.04); }
-    .for-who {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    .testimonials {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    .price-card {
-      max-width: 520px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 26px;
-    }
-    .price {
-      font-size: 48px;
-      margin: 0 0 8px;
+
+    .section h2 {
+      font-size: 1.4rem;
+      margin: 0 0 0.75rem;
       color: var(--primary);
-      font-weight: 800;
     }
-    .faq-item {
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      background: #fff;
-      margin-bottom: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+
+    .section p.lead {
+      color: #4b5563;
+      font-size: 0.98rem;
+      margin: 0 0 1.5rem;
     }
-    .faq-question {
-      padding: 16px;
-      font-weight: 700;
-      cursor: pointer;
+
+    .cards {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    }
+
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      justify-content: center;
+      font-size: 1rem;
+      background: rgba(34, 197, 94, 0.08);
+      margin-bottom: 0.75rem;
     }
-    .faq-answer {
-      padding: 0 16px 16px;
-      display: none;
+
+    .card-title {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    .two-col {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    @media (min-width: 900px) {
+      .two-col {
+        grid-template-columns: 1.1fr 1fr;
+      }
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    .checklist li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-right: 1.2rem;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .forwho-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .forwho-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .forwho-box {
+      background: #ffffff;
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .forwho-box h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    .forwho-box ul {
+      margin: 0;
+      padding-right: 1rem;
+      font-size: 0.9rem;
       color: #4b5563;
     }
-    .faq-item.active .faq-answer { display: block; }
-    .faq-item.active .faq-question::after { content: "−"; }
-    .faq-question::after { content: "+"; font-weight: 800; color: var(--accent); }
+
+    .forwho-box li {
+      margin-bottom: 0.4rem;
+    }
+
+    .testimonials {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 900px) {
+      .testimonials {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .testimonial {
+      background: #ffffff;
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .pricing-wrap {
+      text-align: center;
+    }
+
+    .pricing-card {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: #ffffff;
+      border-radius: 1.5rem;
+      padding: 1.75rem 1.5rem;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      max-width: 420px;
+      text-align: center;
+    }
+
+    .price {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--primary);
+    }
+
+    .price-note {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-list {
+      list-style: none;
+      margin: 0 0 1.25rem;
+      padding: 0;
+      font-size: 0.9rem;
+      color: #374151;
+      text-align: right;
+    }
+
+    .pricing-list li {
+      margin-bottom: 0.4rem;
+    }
+
+    .guarantee {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-top: 0.75rem;
+    }
+
+    .small-note {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+    }
+
+    .faq-list {
+      margin-top: 1rem;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: 1rem;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: none;
+      background: transparent;
+      text-align: right;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .faq-question span.icon {
+      font-size: 1.1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 1rem;
+      color: #4b5563;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      transition: max-height 0.25s ease, padding-bottom 0.25s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-bottom: 0.9rem;
+    }
+
+    .faq-item.open .faq-question span.icon {
+      transform: rotate(45deg);
+    }
+
     footer {
-      background: #0b1221;
-      color: #e2e8f0;
-      padding: 28px 0;
-      margin-top: 20px;
-    }
-    footer a { color: #cbd5e1; margin-left: 10px; }
-
-    @media (min-width: 720px) {
-      nav { display: flex; }
-      .hero { grid-template-columns: repeat(2, 1fr); padding: 64px 0 48px; }
-      .hero h1 { font-size: 34px; }
-      .benefits-grid { grid-template-columns: repeat(2, 1fr); }
-      .inside-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
-      .for-who { grid-template-columns: repeat(2, 1fr); }
-      .testimonials { grid-template-columns: repeat(3, 1fr); }
+      border-top: 1px solid rgba(15, 23, 42, 0.06);
+      padding: 1.5rem 0;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #6b7280;
     }
 
-    @media (min-width: 1024px) {
-      .container { width: min(1180px, 88vw); }
-      .hero h1 { font-size: 38px; }
-      .benefits-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-flex {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-flex {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .social-links a {
+      font-size: 0.8rem;
+      opacity: 0.85;
+    }
+
+    .social-links a:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 56px;
+        left: 1.5rem;
+        right: 1.5rem;
+        background: #ffffff;
+        border-radius: 1rem;
+        padding: 1rem;
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.16);
+        gap: 0.75rem;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
     }
   </style>
 </head>
 <body id="top">
   <header>
-    <div class="container navbar">
-      <a href="#top" class="logo-link">
-        <img src="https://we.tl/t-bVp1t0O9Q8" alt="HAAKS logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-        <span class="logo-fallback">HAAKS</span>
-      </a>
-      <nav aria-label="روابط التنقل">
-        <a href="#benefits">المميزات</a>
-        <a href="#inside">إيه جوّه التيمبليت؟</a>
-        <a href="#for-who">مناسب لمين؟</a>
-        <a href="#testimonials">آراء العملاء</a>
-        <a href="#faq">الأسئلة الشائعة</a>
-        <a href="#pricing" class="btn btn-primary" style="padding:10px 16px;">اشترِ الآن</a>
+    <div class="container">
+      <nav>
+        <a href="#top" class="logo-wrapper">
+          <img src="https://we.tl/t-bVp1t0O9Q8" alt="HAAKS logo" class="logo-img" />
+          <span class="logo-fallback">HAAKS</span>
+        </a>
+        <button class="menu-toggle" id="menuToggle">القائمة</button>
+        <div class="nav-links" id="navLinks">
+          <a href="#features">المميزات</a>
+          <a href="#inside">إيه جوّه التيمبليت؟</a>
+          <a href="#forwho">مناسب لمين؟</a>
+          <a href="#testimonials">آراء العملاء</a>
+          <a href="#faq">الأسئلة الشائعة</a>
+          <a href="#pricing" class="btn btn-primary">اشترِ الآن</a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="container hero" aria-labelledby="hero-title">
-      <div>
-        <h1 id="hero-title">خطة جاهزة على نوشن تزوّد مبيعات منتجك الرقمي من السوشيال ميديا</h1>
-        <p class="lead">نوشن تيمبليت يعلّمك خطوة بخطوة إزاي تبيع منتجك الرقمي أسرع على السوشيال ميديا.</p>
-        <ul class="bullets">
-          <li><span class="bullet-dot"></span>تنظيم أفكارك ومحتواك في مكان واحد.</li>
-          <li><span class="bullet-dot"></span>خطوات تطبيق جاهزة تمشي عليها يوم بيوم.</li>
-          <li><span class="bullet-dot"></span>متابعة النتائج والمبيعات بسهولة.</li>
-          <li><span class="bullet-dot"></span>تقليل اللخبطة وتعرف تبدأ منين.</li>
-        </ul>
-        <div class="hero-actions">
-          <a href="#pricing" class="btn btn-primary">اشترِ الآن</a>
-          <a href="#inside" class="btn btn-secondary">شوف إيه جوّه التيمبليت</a>
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">HAAKS – Notion Template</div>
+          <h1>خطة جاهزة على نوشن تزوّد مبيعات منتجك الرقمي من السوشيال ميديا</h1>
+          <p class="hero-sub">
+            نوشن تيمبليت يعلّمك خطوة بخطوة إزاي تبيع منتجك الرقمي أسرع على السوشيال ميديا، من أول الفكرة
+            لحد ما تقفل المبيعات وتعرف إيه اللي شغال.
+          </p>
+          <ul class="hero-bullets">
+            <li><span class="check">✔</span> توقف اللخبطة وتشتغل بنظام واضح كل يوم.</li>
+            <li><span class="check">✔</span> ستب باي ستب من أول التجهيز لحد إطلاق العرض وقياس النتايج.</li>
+            <li><span class="check">✔</span> مكان واحد تتابع فيه المحتوى، العروض، والمبيعات.</li>
+            <li><span class="check">✔</span> معمول مخصوص لشباب بين ٢٠–٣٥ عندهم بيزنس أو منتجات على السوشيال.</li>
+          </ul>
+          <div class="hero-ctas">
+            <a href="#pricing" class="btn btn-primary">اشترِ الآن</a>
+            <a href="#inside" class="btn btn-outline">شوف إيه جوّه التيمبليت</a>
+          </div>
+          <div class="hero-badge">ديجيتال برودكت – توصلك فورًا بعد الدفع 🎉</div>
         </div>
-        <p class="trust">ديجيتال برودكت – توصلك فورًا بعد الدفع</p>
-      </div>
-      <div class="mockup-card">
-        <div class="mockup-placeholder">صورة من التيمبليت</div>
-        <p style="margin:12px 0 0; color:#6b7280;">معاينة سريعة للشكل والتنظيم جوّه نوشن.</p>
-      </div>
-    </section>
 
-    <section id="benefits" class="container" aria-labelledby="benefits-title">
-      <h2 id="benefits-title" class="section-title">ليه التيمبليت ده؟</h2>
-      <p class="section-desc">مخصوص للشباب من 20 لـ 35 سنة عندهم بيزنس أو منتجات على السوشيال ميديا وعايزين نظام بسيط وواضح يساعدهم يبيعوا أكتر.</p>
-      <div class="benefits-grid">
-        <div class="card">
-          <div class="icon-circle">✓</div>
-          <h3 style="margin:0 0 8px;">هتوقف اللخبطة</h3>
-          <p style="margin:0; color:#4b5563;">تشتغل بخطة واضحة بدل العشوائية، وتعرف كل خطوة تعملها إمتى.</p>
-        </div>
-        <div class="card">
-          <div class="icon-circle">🗓️</div>
-          <h3 style="margin:0 0 8px;">جدول محتوى جاهز</h3>
-          <p style="margin:0; color:#4b5563;">تعرف كل يوم تنزل إيه عشان المنتج يبان ويوصل للعملاء.</p>
-        </div>
-        <div class="card">
-          <div class="icon-circle">⚡</div>
-          <h3 style="margin:0 0 8px;">تيمبليت جاهز</h3>
-          <p style="margin:0; color:#4b5563;">بدل ما تضيع وقتك تبني من الصفر، افتح وابدأ تطبق فورًا.</p>
-        </div>
-        <div class="card">
-          <div class="icon-circle">📈</div>
-          <h3 style="margin:0 0 8px;">متابعة النتائج</h3>
-          <p style="margin:0; color:#4b5563;">تابع مبيعاتك واعرف إيه اللي شغال وإزاي تطوّره.</p>
-        </div>
-        <div class="card">
-          <div class="icon-circle">🎯</div>
-          <h3 style="margin:0 0 8px;">خطوات واضحة</h3>
-          <p style="margin:0; color:#4b5563;">ستب باي ستب من أول الفكرة لحد بيع المنتج.</p>
-        </div>
-        <div class="card">
-          <div class="icon-circle">⏱️</div>
-          <h3 style="margin:0 0 8px;">توفير وقت</h3>
-          <p style="margin:0; color:#4b5563;">كل حاجة متجهزة، ركز في التنفيذ بدل التخطيط.</p>
+        <div>
+          <div class="mockup">
+            <div class="mockup-header"></div>
+            <div class="mockup-body">
+              <div class="mockup-pill">لقطة من التيمبليت</div>
+              <div class="mockup-title">Dashboard بيع منتجك الرقمي</div>
+              <p class="mockup-text">
+                تخطيط محتوى، offers، وتتبع المبيعات في صفحة واحدة منظمة… بدل عشرات النوتس المتبعثرة على موبايلك.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="inside" class="container" aria-labelledby="inside-title">
-      <h2 id="inside-title" class="section-title">إيه جوّه التيمبليت؟</h2>
-      <div class="inside-grid">
-        <p style="margin:0; color:#4b5563;">التيمبليت معمول مخصوص لأصحاب البيزنس على السوشيال ميديا: بسيط، منظم، ويخليك تشوف يومك وأسبوعك وشهرك ماشيين على خطة بيع واضحة.</p>
-        <ul class="checklist">
-          <li>✓ صفحة تخطيط المحتوى الأسبوعي والشهري.</li>
-          <li>✓ صفحة أفكار جاهزة لأنواع بوستات تبيع.</li>
-          <li>✓ صفحة للعروض (Offers) والكامبيانات.</li>
-          <li>✓ صفحة متابعة المبيعات والنتايج.</li>
-          <li>✓ صفحة لنوتس وتطوير الاستراتيجية.</li>
-        </ul>
+    <section class="section" id="features">
+      <div class="container">
+        <h2>ليه التيمبليت ده مختلف؟</h2>
+        <p class="lead">
+          بدل ما تفضّل تلف في دايرة "أعمل إيه النهارده؟" التيمبليت ده بيحطلك خطة واضحة تقدر تمشي عليها وتكررها
+          مع أي منتج رقمي عندك.
+        </p>
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon">📋</div>
+            <div class="card-title">نظام بدل العشوائية</div>
+            <div class="card-text">
+              توقف التخمين اليومي. هتعرف كل أسبوع إنت نازل بإيه، وبتخدم أنهي offer، وبتكلم مين.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🧭</div>
+            <div class="card-title">ستب باي ستب</div>
+            <div class="card-text">
+              خطوات بسيطة من أول تحديد الهدف، مرورًا بتحضير المحتوى، لحد إطلاق الكامبيان ومتابعة النتائج.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">📊</div>
+            <div class="card-title">متابعة مبيعاتك</div>
+            <div class="card-text">
+              تراك واضح للمبيعات، تقدر تشوف أي كامبيان جاب نتيجة وأي offer محتاج تعديل.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🧠</div>
+            <div class="card-title">يفكّ الزحمة في دماغك</div>
+            <div class="card-text">
+              كل الأفكار، العروض، والمسودات متقسّمة بذكاء، بدل ما تبقى ضايع بين نوتس وscreenshots.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">⚡</div>
+            <div class="card-title">جاهز للتنفيذ فورًا</div>
+            <div class="card-text">
+              مش محتاج تقعد تبني التيمبليت من الصفر. كل الأقسام متجهزة، عليك تملاها وتمشي على الخطوات.
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-icon">♻️</div>
+            <div class="card-title">ينفع لكل منتجاتك</div>
+            <div class="card-text">
+              تقدر تكرر نفس النظام لأي ديجيتال برودكت أو خدمة تانية عندك على السوشيال ميديا.
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="for-who" class="container" aria-labelledby="for-who-title">
-      <h2 id="for-who-title" class="section-title">مناسب لمين؟</h2>
-      <div class="for-who">
-        <div class="card">
-          <h3 style="margin:0 0 12px;">مناسب لك لو:</h3>
-          <ul class="bullets" style="margin:0;">
-            <li><span class="bullet-dot"></span>عندك منتج رقمي أو خدمة وبتبيع من السوشيال ميديا.</li>
-            <li><span class="bullet-dot"></span>حاسس إنك تايه ومش منظم في المحتوى والمبيعات.</li>
-            <li><span class="bullet-dot"></span>عايز تمبلت يمشيك خطوة بخطوة بدل ما تجرّب عشوائي.</li>
+    <section class="section" id="inside">
+      <div class="container two-col">
+        <div>
+          <h2>إيه جوّه التيمبليت بالظبط؟</h2>
+          <p class="lead">
+            كل صفحة جوّه HAAKS – Notion Template معمولة مخصوص لصنّاع المحتوى وأصحاب البيزنس على السوشيال،
+            عشان تبقى شايف الصورة كاملة من أول فكرة البوست لحد الفلوس اللي دخلت.
+          </p>
+        </div>
+        <div>
+          <ul class="checklist">
+            <li>صفحة Dashboard رئيسية تشوف منها كل حاجة في لمحة واحدة.</li>
+            <li>صفحة تخطيط المحتوى الأسبوعي والشهري، بالمواعيد والمنصات.</li>
+            <li>صفحة أفكار جاهزة لأنواع بوستات تبيع (قصة، proof، عرض، تعليم…).</li>
+            <li>صفحة للعروض (Offers) والكامبيانات مع أهداف واضحة وdeadlines.</li>
+            <li>صفحة متابعة المبيعات والنتايج لكل منتج أو offer.</li>
+            <li>صفحة نوتس وأفكار لتحسين الستراتيجي والرسائل التسويقية.</li>
           </ul>
         </div>
-        <div class="card">
-          <h3 style="margin:0 0 12px;">مش مناسب لك لو:</h3>
-          <ul class="bullets" style="margin:0;">
-            <li><span class="bullet-dot"></span>لسه مش عارف هتبيع إيه أصلاً.</li>
-            <li><span class="bullet-dot"></span>مش ناوي تطبّق أو تشتغل على التيمبليت.</li>
-            <li><span class="bullet-dot"></span>مش بتستخدم السوشيال ميديا في البيع.</li>
+      </div>
+    </section>
+
+    <section class="section" id="forwho">
+      <div class="container">
+        <h2>مناسب لمين ومش مناسب لمين؟</h2>
+        <div class="forwho-grid">
+          <div class="forwho-box">
+            <h3>مناسب لك لو:</h3>
+            <ul>
+              <li>عندك منتج رقمي أو خدمة وبتبيع من السوشيال ميديا.</li>
+              <li>حاسس إنك تايه ومش منظم في المحتوى والمبيعات.</li>
+              <li>بتضيع وقت كبير في التفكير هتنزل إيه النهارده.</li>
+              <li>عايز تمبلت يمشيك خطوة بخطوة بدل ما تجرّب عشوائي.</li>
+              <li>سنّك ما بين ٢٠–٣٥ وبتشتغل أونلاين أو جنب شغلك الأساسي.</li>
+            </ul>
+          </div>
+          <div class="forwho-box">
+            <h3>مش مناسب لك لو:</h3>
+            <ul>
+              <li>لسه مش عارف هتبيع إيه أصلاً ومفيش منتج أو خدمة واضحة.</li>
+              <li>مش ناوي تطبّق أو تخصص وقت تنفّذ اللي جوّه التيمبليت.</li>
+              <li>مش بتستخدم السوشيال ميديا أساسًا في البيع أو التسويق.</li>
+              <li>بتدور على كورس طويل مش تمبلت تطبيقي جاهز.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="container">
+        <h2>ناس استخدمته قالت إيه؟</h2>
+        <p class="lead">
+          دي أمثلة لناس استخدمت النظام وبدأت تحس إن الشغل على السوشيال بقى أخف وأسهل.
+        </p>
+        <div class="testimonials">
+          <div class="testimonial">
+            <div class="testimonial-name">محمد – صانع محتوى تعليمي</div>
+            <div class="testimonial-role">بيبيع كورسات أونلاين</div>
+            <div class="testimonial-text">
+              قبل التيمبليت كنت كل أسبوع ببدأ من الصفر. دلوقتي عندي خطة واضحة للشهر كامل، والمبيعات بقت ثابتة مش طفرات.
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial-name">سارة – أونلاين كوتش</div>
+            <div class="testimonial-role">براند شخصي على إنستجرام</div>
+            <div class="testimonial-text">
+              أكتر حاجة حبيتها إن كل حاجة في مكان واحد: الأفكار، العروض، والنتايج. بقيت عارفة إيه اللي بيبيع وأكرره.
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial-name">أحمد – صاحب بيزنس ديجيتال برودكتس</div>
+            <div class="testimonial-role">بيبيع تمبليتس وكورسات</div>
+            <div class="testimonial-text">
+              التيمبليت وفر علي وقت كبير في التنظيم. بدل ما أفتح مليون نوت، بفتح صفحة واحدة على نوشن وأشتغل.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container pricing-wrap">
+        <h2>سعر التيمبليت</h2>
+        <div class="pricing-card">
+          <div class="price">٩٩</div>
+          <div class="price-note">سعر مرة واحدة – استخدام مدى الحياة</div>
+          <ul class="pricing-list">
+            <li>وصول كامل لـ HAAKS – Notion Template.</li>
+            <li>كل الصفحات اللي شفتها فوق جاهزة تستخدمها فورًا.</li>
+            <li>إرشادات بسيطة جوّه التيمبليت تشرحلك تستخدمه إزاي.</li>
+            <li>تقدر تعدّل وتطوّر عليه بالطريقة اللي تناسب شغلك.</li>
           </ul>
+          <a href="#checkout" class="btn btn-primary">اشترِ الآن</a>
+          <p class="small-note">الدفع آمن – هيوصلك لينك التيمبليت فورًا على الإيميل بعد الدفع.</p>
+          <p class="guarantee">
+            مش مجرد تمبلت… ده نظام تقدر تمشي عليه يوم بيوم عشان تبيع أكتر من نفس الجمهور اللي عندك.
+          </p>
         </div>
       </div>
     </section>
 
-    <section id="testimonials" class="container" aria-labelledby="testimonials-title">
-      <h2 id="testimonials-title" class="section-title">آراء العملاء</h2>
-      <div class="testimonials">
-        <div class="card">
-          <h3 style="margin:0 0 6px;">محمد – صانع محتوى</h3>
-          <p style="margin:0; color:#4b5563;">التيمبليت نظّم أفكاري وخلي المحتوى مربوط بالمبيعات، المبيعات زادت أول شهر.</p>
-        </div>
-        <div class="card">
-          <h3 style="margin:0 0 6px;">سارة – مدربة أونلاين</h3>
-          <p style="margin:0; color:#4b5563;">مبقاش في لخبطة، كل حاجة متقسمة خطط وأفكار وبجد سهّل عليا التخطيط.</p>
-        </div>
-        <div class="card">
-          <h3 style="margin:0 0 6px;">أحمد – مسوّق حر</h3>
-          <p style="margin:0; color:#4b5563;">تابعت المبيعات وعرفت إيه اللي بيبيع، التيمبليت اداني نظام ألتزم بيه.</p>
-        </div>
-      </div>
-    </section>
+    <section class="section" id="faq">
+      <div class="container">
+        <h2>الأسئلة الشائعة</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>إزاي هستلم التيمبليت بعد الدفع؟</span>
+              <span class="icon">＋</span>
+            </button>
+            <div class="faq-answer">
+              بعد ما تكمل الدفع هيوصلك على الإيميل لينك لنوشن تيمبليت. تقدر تعمل نسخة في الأكاونت بتاعك وتبدأ تستخدمها فورًا.
+            </div>
+          </div>
 
-    <section id="pricing" class="container" aria-labelledby="pricing-title">
-      <h2 id="pricing-title" class="section-title">سعر التيمبليت</h2>
-      <div class="card price-card">
-        <p class="price">٩٩ دولار</p>
-        <p style="margin:0 0 14px; color:#4b5563;">الوصول الكامل لـ HAAKS – Notion Template + أي تحديثات جاية مجانًا.</p>
-        <ul class="bullets" style="justify-content:center;">
-          <li><span class="bullet-dot"></span>شرح استخدام مختصر تطبق منه فورًا.</li>
-          <li><span class="bullet-dot"></span>نماذج محتوى وأفكار جاهزة للبوستات.</li>
-          <li><span class="bullet-dot"></span>صفحات متابعة مبيعات ونتايج.</li>
-        </ul>
-        <p style="margin:10px 0 18px; color:#111827; font-weight:700;">مش مجرد تمبلت… ده نظام تقدر تمشي عليه يوم بيوم.</p>
-        <a href="#checkout" class="btn btn-primary" style="width:100%;">اشترِ الآن</a>
-        <p style="margin:12px 0 0; color:#6b7280; font-size:13px;">الدفع آمن – هيوصلك لينك التيمبليت فورًا على الإيميل بعد الدفع.</p>
-      </div>
-    </section>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>هل لازم أكون خبير في Notion عشان أستفيد؟</span>
+              <span class="icon">＋</span>
+            </button>
+            <div class="faq-answer">
+              لأ، خالص. لو استخدمت نوشن مرة أو اتنين هتعرف تمشي جوّه التيمبليت بسهولة. وفيه ملاحظات بسيطة جوّه كل صفحة
+              تشرحلك تستخدمها إزاي.
+            </div>
+          </div>
 
-    <section id="faq" class="container" aria-labelledby="faq-title">
-      <h2 id="faq-title" class="section-title">الأسئلة الشائعة</h2>
-      <div class="faq-item">
-        <div class="faq-question">إزاي هستلم التيمبليت بعد الدفع؟</div>
-        <div class="faq-answer">هيوصلك لينك التيمبليت على الإيميل فورًا بعد الدفع مع خطوات سريعة لتشغيله.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">هل لازم أكون خبير في Notion عشان أستفيد؟</div>
-        <div class="faq-answer">لأ، التيمبليت بسيط ومعاه شرح يعرّفك تستخدم الصفحات خطوة بخطوة.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">هل أقدر أستخدم التيمبليت لأكتر من منتج؟</div>
-        <div class="faq-answer">أيوه، تقدر تضيف منتجات وخدمات مختلفة وتتابع كل حاجة من نفس النظام.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">هل أقدر أعدل على التيمبليت بطريقتي؟</div>
-        <div class="faq-answer">طبعًا، تقدر تعدل الصفحات والعناوين وتضيف أقسام تناسب شغلك.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">هل في تحديثات جاية؟ وإزاي هتوصلني؟</div>
-        <div class="faq-answer">أي تحديثات هتنزل هيوصلك بيها إيميل وتقدر تضيفها للتيمبليت بسهولة.</div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>هل أقدر أستخدم التيمبليت لأكتر من منتج؟</span>
+              <span class="icon">＋</span>
+            </button>
+            <div class="faq-answer">
+              أيوه، تقدر تضيف أكتر من منتج رقمي أو خدمة وتستخدم نفس النظام معاهم، وتتابع كل واحد لوحده من جوّه نفس الـ Dashboard.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>هل أقدر أعدّل على التيمبليت بطريقتي؟</span>
+              <span class="icon">＋</span>
+            </button>
+            <div class="faq-answer">
+              أكيد. التيمبليت معمول كـ base قوي تمشي عليه، وتقدر تزود أو تشيل الصفحات والأعمدة اللي تناسب البيزنس بتاعك.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>هل في تحديثات جاية للتيمبليت؟</span>
+              <span class="icon">＋</span>
+            </button>
+            <div class="faq-answer">
+              لو نزلنا نسخة مطوّرة، هنبعتلك إيميل بالتحديثات وإزاي تقدر تضيفها بسهولة لنسختك.
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;">
-      <p style="margin:0;">© HAAKS – كل الحقوق محفوظة.</p>
-      <p style="margin:0;">لو عندك أي سؤال ابعت على: <a href="mailto:support@example.com">support@example.com</a></p>
-      <div style="display:flex; gap:12px;">
-        <a href="#">Instagram</a>
-        <a href="#">Twitter</a>
-        <a href="#">LinkedIn</a>
+    <div class="container">
+      <div class="footer-flex">
+        <span>© HAAKS – كل الحقوق محفوظة.</span>
+        <span>لو عندك أي سؤال ابعت على: <a href="mailto:support@example.com">support@example.com</a></span>
+        <div class="social-links">
+          <a href="#" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" target="_blank" rel="noopener">Twitter</a>
+          <a href="#" target="_blank" rel="noopener">TikTok</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script>
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-      item.querySelector('.faq-question').addEventListener('click', () => {
-        item.classList.toggle('active');
-      });
-    });
+    // Mobile nav toggle
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(event) {
-        const targetId = this.getAttribute('href');
-        if (targetId.length > 1) {
-          event.preventDefault();
-          document.querySelector(targetId)?.scrollIntoView({ behavior: 'smooth' });
-        }
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    }
+
+    // FAQ accordion
+    document.querySelectorAll(".faq-item").forEach((item) => {
+      const btn = item.querySelector(".faq-question");
+      btn.addEventListener("click", () => {
+        const isOpen = item.classList.contains("open");
+        document.querySelectorAll(".faq-item").forEach((i) => i.classList.remove("open"));
+        if (!isOpen) item.classList.add("open");
       });
     });
   </script>
