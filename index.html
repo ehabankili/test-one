@@ -3,450 +3,928 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HAAKS – Notion Template</title>
+  <title>YOUR BRAND - Slim Ceramic Straightener</title>
+  <!-- ====== GLOBAL STYLES ====== -->
   <style>
-    :root {
-      --primary: #111827;
-      --accent: #22c55e;
-      --bg: #f9fafb;
-      --text: #0f172a;
-    }
-    * { box-sizing: border-box; }
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: "Tahoma", "Segoe UI", system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      scroll-behavior: smooth;
+      padding: 0;
     }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e5e7eb;
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #ffffff;
+      color: #111827;
+      line-height: 1.6;
     }
-    .container {
-      width: min(1200px, 90vw);
+
+    .page-wrapper {
+      max-width: 1200px;
       margin: 0 auto;
+      padding: 0 16px 60px;
     }
-    .navbar {
+
+    /* Top bar (free shipping + warranty + gift) */
+    .top-bar {
+      background: #111827;
+      color: #f9fafb;
+      font-size: 13px;
+      padding: 6px 12px;
+      text-align: center;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-      gap: 18px;
-    }
-    .logo-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      position: relative;
-      min-height: 36px;
-    }
-    .logo-img {
-      width: 130px;
-      height: 36px;
-      object-fit: contain;
-    }
-    .logo-fallback {
-      display: none;
-      font-weight: 700;
-      color: var(--primary);
-      font-size: 18px;
-    }
-    nav {
-      display: none;
-      align-items: center;
-      gap: 18px;
-      font-size: 14px;
+      gap: 24px;
+      justify-content: center;
       flex-wrap: wrap;
     }
-    .btn {
+
+    .top-bar span {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-      border: 1px solid transparent;
-      cursor: pointer;
+      gap: 4px;
+      white-space: nowrap;
     }
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 10px 30px rgba(17, 24, 39, 0.15);
-    }
-    .btn-primary:hover { transform: translateY(-2px); }
-    .btn-secondary {
-      background: #fff;
-      border-color: #e5e7eb;
-      color: var(--primary);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-    }
-    .btn-secondary:hover { transform: translateY(-2px); }
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr;
-      align-items: center;
-      gap: 32px;
-      padding: 48px 0 36px;
-    }
-    .hero h1 {
-      font-size: 26px;
-      margin: 0 0 12px;
-      color: var(--primary);
-      line-height: 1.3;
-    }
-    .hero p.lead {
-      margin: 0 0 16px;
-      font-size: 16px;
-      color: #4b5563;
-    }
-    .bullets { list-style: none; padding: 0; margin: 0 0 20px; }
-    .bullets li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-    .bullet-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--accent);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-    .trust { margin-top: 10px; font-size: 13px; color: #6b7280; }
-    .mockup-card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-      text-align: center;
-    }
-    .mockup-placeholder {
-      background: linear-gradient(135deg, #f1f5f9, #e5e7eb);
-      border-radius: 12px;
-      height: 240px;
-      display: grid;
-      place-items: center;
-      color: #475569;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-    section { padding: 52px 0; }
-    .section-title { margin: 0 0 18px; font-size: 24px; color: var(--primary); }
-    .section-desc { margin: 0 0 24px; color: #4b5563; }
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    .card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .card:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,0.08); }
-    .icon-circle {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #ecfdf3;
-      display: grid;
-      place-items: center;
-      color: var(--accent);
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .inside-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      align-items: start;
-    }
-    .checklist { list-style: none; padding: 0; margin: 0; }
-    .checklist li { margin-bottom: 12px; padding: 10px 12px; background: #fff; border-radius: 10px; border: 1px solid #e5e7eb; box-shadow: 0 6px 18px rgba(0,0,0,0.04); }
-    .for-who {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    .testimonials {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    .price-card {
-      max-width: 520px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 26px;
-    }
-    .price {
-      font-size: 48px;
-      margin: 0 0 8px;
-      color: var(--primary);
-      font-weight: 800;
-    }
-    .faq-item {
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      background: #fff;
-      margin-bottom: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    }
-    .faq-question {
-      padding: 16px;
-      font-weight: 700;
-      cursor: pointer;
+
+    /* Header / Navbar */
+    .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 14px 16px;
+      border-bottom: 1px solid #e5e7eb;
+      margin-bottom: 24px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #374151;
+    }
+
+    .nav-links a:hover {
+      color: #111827;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .language-switch,
+    .cart-btn {
+      border: 1px solid #e5e7eb;
+      padding: 6px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    .cart-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Product section */
+    .product-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 32px;
+      margin-top: 12px;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 12px;
     }
-    .faq-answer {
-      padding: 0 16px 16px;
-      display: none;
+
+    .main-image {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    .main-image img {
+      width: 100%;
+      display: block;
+    }
+
+    .thumbs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .thumb {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      cursor: pointer;
+    }
+
+    .thumb img {
+      width: 100%;
+      display: block;
+    }
+
+    .thumb.active {
+      border-color: #111827;
+    }
+
+    /* Product info */
+    .product-info {
+      padding: 4px;
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .badge-sale {
+      background: #b91c1c;
+      color: #fff;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .badge-new {
+      background: #111827;
+      color: #fff;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .product-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .price-block {
+      margin-bottom: 8px;
+    }
+
+    .sale-price {
+      font-size: 22px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .old-price {
+      font-size: 14px;
+      color: #9ca3af;
+      text-decoration: line-through;
+      margin-left: 8px;
+    }
+
+    .tax-note {
+      font-size: 12px;
+      color: #4b5563;
+      margin-bottom: 12px;
+    }
+
+    .short-desc {
+      font-size: 14px;
+      color: #374151;
+      margin-bottom: 20px;
+    }
+
+    .quantity-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .quantity-label {
+      font-size: 14px;
+    }
+
+    .quantity-control {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .quantity-control button {
+      background: transparent;
+      border: none;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .quantity-control input {
+      width: 40px;
+      border: none;
+      text-align: center;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .cta-btn {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: none;
+      background: #111827;
+      color: #f9fafb;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+
+    .cta-btn:hover {
+      opacity: 0.93;
+    }
+
+    .note-small {
+      font-size: 11px;
+      color: #4b5563;
+      margin-bottom: 16px;
+    }
+
+    .usps-list {
+      list-style: none;
+      font-size: 13px;
+      color: #374151;
+      display: grid;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .usps-list li::before {
+      content: "• ";
+      color: #111827;
+    }
+
+    /* Tabs */
+    .tabs {
+      margin-top: 40px;
+    }
+
+    .tab-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-bottom: 1px solid #e5e7eb;
+      margin-bottom: 16px;
+    }
+
+    .tab-button {
+      padding: 8px 14px;
+      font-size: 14px;
+      border-radius: 999px 999px 0 0;
+      border: 1px solid transparent;
+      border-bottom: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .tab-button.active {
+      border-color: #e5e7eb;
+      border-bottom-color: #ffffff;
+      background: #ffffff;
+      font-weight: 600;
+    }
+
+    .tab-content {
+      font-size: 14px;
+      color: #374151;
+      padding: 16px 0 4px;
+    }
+
+    .tab-content p {
+      margin-bottom: 8px;
+    }
+
+    .tab-content ul {
+      margin-left: 18px;
+      margin-bottom: 8px;
+    }
+
+    /* Features grid (icons + text) */
+    .features-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      margin: 0 auto 10px;
+      border: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .feature-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .feature-text {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    /* Related products */
+    .related-section {
+      margin-top: 48px;
+    }
+
+    .related-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .related-card {
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .related-img {
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .related-img img {
+      width: 100%;
+      display: block;
+    }
+
+    .related-badges {
+      display: flex;
+      gap: 6px;
+      font-size: 11px;
+      align-items: center;
+    }
+
+    .related-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .related-price {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .related-old-price {
+      font-size: 12px;
+      color: #9ca3af;
+      text-decoration: line-through;
+      margin-left: 6px;
+    }
+
+    .related-cta {
+      margin-top: 4px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: none;
+      background: #111827;
+      color: #f9fafb;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    /* Footer (simple version) */
+    .footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid #e5e7eb;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr 1.5fr 1fr;
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+
+    .footer-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #111827;
+    }
+
+    .footer ul {
+      list-style: none;
+      display: grid;
+      gap: 4px;
+    }
+
+    .footer a {
+      text-decoration: none;
       color: #4b5563;
     }
-    .faq-item.active .faq-answer { display: block; }
-    .faq-item.active .faq-question::after { content: "−"; }
-    .faq-question::after { content: "+"; font-weight: 800; color: var(--accent); }
-    footer {
-      background: #0b1221;
-      color: #e2e8f0;
-      padding: 28px 0;
-      margin-top: 20px;
-    }
-    footer a { color: #cbd5e1; margin-left: 10px; }
 
-    @media (min-width: 720px) {
-      nav { display: flex; }
-      .hero { grid-template-columns: repeat(2, 1fr); padding: 64px 0 48px; }
-      .hero h1 { font-size: 34px; }
-      .benefits-grid { grid-template-columns: repeat(2, 1fr); }
-      .inside-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
-      .for-who { grid-template-columns: repeat(2, 1fr); }
-      .testimonials { grid-template-columns: repeat(3, 1fr); }
+    .footer a:hover {
+      color: #111827;
     }
 
-    @media (min-width: 1024px) {
-      .container { width: min(1180px, 88vw); }
-      .hero h1 { font-size: 38px; }
-      .benefits-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .newsletter-input {
+      display: flex;
+      margin-top: 8px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      overflow: hidden;
+    }
+
+    .newsletter-input input {
+      border: none;
+      padding: 8px 10px;
+      flex: 1;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .newsletter-input button {
+      border: none;
+      padding: 8px 12px;
+      font-size: 13px;
+      background: #111827;
+      color: #f9fafb;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .product-section {
+        grid-template-columns: 1fr;
+      }
+      .features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .related-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .nav-links {
+        display: none; /* لو عايز موبايل منيو لاحقًا */
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
-<body id="top">
-  <header>
-    <div class="container navbar">
-      <a href="#top" class="logo-link">
-        <img src="https://we.tl/t-bVp1t0O9Q8" alt="HAAKS logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-        <span class="logo-fallback">HAAKS</span>
-      </a>
-      <nav aria-label="روابط التنقل">
-        <a href="#benefits">المميزات</a>
-        <a href="#inside">إيه جوّه التيمبليت؟</a>
-        <a href="#for-who">مناسب لمين؟</a>
-        <a href="#testimonials">آراء العملاء</a>
-        <a href="#faq">الأسئلة الشائعة</a>
-        <a href="https://www.speedtest.net/" class="btn btn-primary" style="padding:10px 16px;">اشترِ الآن</a>
-      </nav>
+<body>
+  <div class="page-wrapper">
+    <!-- Top bar -->
+    <div class="top-bar">
+      <span>🚚 توصيل مجاني لكل المحافظات</span>
+      <span>🛡️ ضمان عامين</span>
+      <span>🪙 جنيه دهب هدية على كل أوردر</span>
     </div>
-  </header>
 
-  <main>
-    <section class="container hero" aria-labelledby="hero-title">
-      <div>
-        <h1 id="hero-title">خطة جاهزة على نوشن تزوّد مبيعات منتجك الرقمي من السوشيال ميديا</h1>
-        <p class="lead">نوشن تيمبليت يعلّمك خطوة بخطوة إزاي تبيع منتجك الرقمي أسرع على السوشيال ميديا.</p>
-        <ul class="bullets">
-          <li><span class="bullet-dot"></span>تنظيم أفكارك ومحتواك في مكان واحد.</li>
-          <li><span class="bullet-dot"></span>خطوات تطبيق جاهزة تمشي عليها يوم بيوم.</li>
-          <li><span class="bullet-dot"></span>متابعة النتائج والمبيعات بسهولة.</li>
-          <li><span class="bullet-dot"></span>تقليل اللخبطة وتعرف تبدأ منين.</li>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="logo">YOUR BRAND</div>
+        <nav class="nav-links">
+          <a href="#">Home</a>
+          <a href="#">Straighteners</a>
+          <a href="#">Curlers</a>
+          <a href="#">Best Sellers</a>
+        </nav>
+      </div>
+      <div class="header-right">
+        <button class="language-switch">العربية / EN</button>
+        <button class="cart-btn">
+          <span>🛒</span>
+          <span>Cart (0)</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Product section -->
+    <section class="product-section">
+      <!-- Gallery -->
+      <div class="gallery">
+        <div class="main-image">
+          <!-- استبدل src بصورة المنتج من Codex -->
+          <img
+            id="main-product-image"
+            src="https://via.placeholder.com/800x800?text=Main+Product+Image"
+            alt="Slim Ceramic Straightener"
+          />
+        </div>
+        <div class="thumbs">
+          <!-- غير روابط الصور حسب ما ترفع في Codex -->
+          <div class="thumb active">
+            <img
+              src="https://via.placeholder.com/300x300?text=Image+1"
+              data-full="https://via.placeholder.com/800x800?text=Image+1"
+              alt="Thumb 1"
+            />
+          </div>
+          <div class="thumb">
+            <img
+              src="https://via.placeholder.com/300x300?text=Image+2"
+              data-full="https://via.placeholder.com/800x800?text=Image+2"
+              alt="Thumb 2"
+            />
+          </div>
+          <div class="thumb">
+            <img
+              src="https://via.placeholder.com/300x300?text=Image+3"
+              data-full="https://via.placeholder.com/800x800?text=Image+3"
+              alt="Thumb 3"
+            />
+          </div>
+          <div class="thumb">
+            <img
+              src="https://via.placeholder.com/300x300?text=Image+4"
+              data-full="https://via.placeholder.com/800x800?text=Image+4"
+              alt="Thumb 4"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Product info -->
+      <div class="product-info">
+        <div class="badge-row">
+          <span class="badge-sale">Save 1,278</span>
+          <span class="badge-new">NEW</span>
+        </div>
+        <h1 class="product-title">Slim Ceramic Straightener</h1>
+
+        <div class="price-block">
+          <span class="sale-price">2,222 EGP</span>
+          <span class="old-price">3,500 EGP</span>
+        </div>
+        <div class="tax-note">جميع الأسعار تشمل الضريبة.</div>
+
+        <p class="short-desc">
+          مكواة شعر سيراميك رفيعة لفرد الشعر القصير والخفيف بسهولة، تقلل الهيشان
+          وتديكي لمعة ونعومة في دقائق بدون ما تضغط على شعرك أو تحرقه.
+        </p>
+
+        <div class="quantity-row">
+          <span class="quantity-label">الكمية</span>
+          <div class="quantity-control">
+            <button type="button" data-qty="minus">-</button>
+            <input type="text" id="quantity-input" value="1" />
+            <button type="button" data-qty="plus">+</button>
+          </div>
+        </div>
+
+        <!-- IMPORTANT: غيّر الرابط بتاع زر الشراء للـ checkout أو صفحة الدفع عندك -->
+        <button
+          class="cta-btn"
+          onclick="window.location.href='#YOUR_CHECKOUT_LINK_HERE'"
+        >
+          اشتري الآن
+        </button>
+
+        <p class="note-small">
+          بالضغط على اشتري الآن، أنت بتوافق على سياسة الدفع والاسترجاع الخاصة
+          بالمتجر.
+        </p>
+
+        <ul class="usps-list">
+          <li>مجرد تمريرة واحدة وبتاخدي فرد ناعم وسريع.</li>
+          <li>ألواح سيراميك تحافظ على ملمس شعرك وتوزع الحرارة بالتساوي.</li>
+          <li>سلك دوّار 360° عشان سهولة الحركة أثناء التصفيف.</li>
+          <li>مناسبة للسفر وخفيفة في الإيد.</li>
         </ul>
-        <div class="hero-actions">
-          <a href="https://www.speedtest.net/" class="btn btn-primary">اشترِ الآن</a>
-          <a href="#inside" class="btn btn-secondary">شوف إيه جوّه التيمبليت</a>
-        </div>
-        <p class="trust">ديجيتال برودكت – توصلك فورًا بعد الدفع</p>
-      </div>
-      <div class="mockup-card">
-        <img src="template-preview.png" alt="صورة من التيمبليت" style="max-width:100%; border-radius: 12px;">
-
-
-        <p style="margin:12px 0 0; color:#6b7280;"> Livery Template</p>
       </div>
     </section>
 
-    <section id="benefits" class="container" aria-labelledby="benefits-title">
-      <h2 id="benefits-title" class="section-title">ليه التيمبليت ده؟</h2>
-      <p class="section-desc">مخصوص للشباب من 20 لـ 35 سنة عندهم بيزنس أو منتجات على السوشيال ميديا وعايزين نظام بسيط وواضح يساعدهم يبيعوا أكتر.</p>
-      <div class="benefits-grid">
-        <div class="card">
-          <div class="icon-circle">✓</div>
-          <h3 style="margin:0 0 8px;">هتوقف اللخبطة</h3>
-          <p style="margin:0; color:#4b5563;">تشتغل بخطة واضحة بدل العشوائية، وتعرف كل خطوة تعملها إمتى.</p>
-        </div>
-        <div class="card">
-          <div class="icon-circle">🗓️</div>
-          <h3 style="margin:0 0 8px;">جدول محتوى جاهز</h3>
-          <p style="margin:0; color:#4b5563;">تعرف كل يوم تنزل إيه عشان المنتج يبان ويوصل للعملاء.</p>
-        </div>
-        <div class="card">
-          <div class="icon-circle">⚡</div>
-          <h3 style="margin:0 0 8px;">تيمبليت جاهز</h3>
-          <p style="margin:0; color:#4b5563;">بدل ما تضيع وقتك تبني من الصفر، افتح وابدأ تطبق فورًا.</p>
-        </div>
-        <div class="card">
-          <div class="icon-circle">📈</div>
-          <h3 style="margin:0 0 8px;">متابعة النتائج</h3>
-          <p style="margin:0; color:#4b5563;">تابع مبيعاتك واعرف إيه اللي شغال وإزاي تطوّره.</p>
-        </div>
-        <div class="card">
-          <div class="icon-circle">🎯</div>
-          <h3 style="margin:0 0 8px;">خطوات واضحة</h3>
-          <p style="margin:0; color:#4b5563;">ستب باي ستب من أول الفكرة لحد بيع المنتج.</p>
-        </div>
-        <div class="card">
-          <div class="icon-circle">⏱️</div>
-          <h3 style="margin:0 0 8px;">توفير وقت</h3>
-          <p style="margin:0; color:#4b5563;">كل حاجة متجهزة، ركز في التنفيذ بدل التخطيط.</p>
-        </div>
+    <!-- Tabs (About / Warranty / Shipping / How to use) -->
+    <section class="tabs">
+      <div class="tab-buttons">
+        <button class="tab-button active" data-tab="about">About</button>
+        <button class="tab-button" data-tab="warranty">Warranty</button>
+        <button class="tab-button" data-tab="shipping">Shipping</button>
+        <button class="tab-button" data-tab="howto">How to use</button>
       </div>
-    </section>
 
-    <section id="inside" class="container" aria-labelledby="inside-title">
-      <h2 id="inside-title" class="section-title">إيه جوّه التيمبليت؟</h2>
-      <div class="inside-grid">
-        <p style="margin:0; color:#4b5563;">التيمبليت معمول مخصوص لأصحاب البيزنس على السوشيال ميديا: بسيط، منظم، ويخليك تشوف يومك وأسبوعك وشهرك ماشيين على خطة بيع واضحة.</p>
-        <ul class="checklist">
-          <li>✓ صفحة تخطيط المحتوى الأسبوعي والشهري.</li>
-          <li>✓ صفحة أفكار جاهزة لأنواع بوستات تبيع.</li>
-          <li>✓ صفحة للعروض (Offers) والكامبيانات.</li>
-          <li>✓ صفحة متابعة المبيعات والنتايج.</li>
-          <li>✓ صفحة لنوتس وتطوير الاستراتيجية.</li>
+      <div class="tab-content" id="tab-about">
+        <p>
+          تصميم رفيع يسمح لك توصلّي لأقصر خصلات بسهولة حوالين الوجه والرقبة، مع
+          حرارة ثابتة تساعدك تحصلي على لوك ناعم بدون ما تعيدي على نفس الخصلة كذا
+          مرة.
+        </p>
+        <p>درجة الحرارة قابلة للتعديل، عشان تختاري الأنسب لنوع شعرك.</p>
+      </div>
+
+      <div class="tab-content" id="tab-warranty" style="display: none">
+        <p>ضمان سنتين ضد عيوب الصناعة من تاريخ الشراء.</p>
+        <ul>
+          <li>الإصلاح أو الاستبدال في حالة وجود عيب تصنيع.</li>
+          <li>الضمان لا يشمل الكسر أو سوء الاستخدام.</li>
         </ul>
       </div>
+
+      <div class="tab-content" id="tab-shipping" style="display: none">
+        <p>الشحن متاح لكل المحافظات داخل مصر.</p>
+        <ul>
+          <li>شحن مجاني للطلبات بداية من مبلغ تحدده.</li>
+          <li>مدة التوصيل من 2–5 أيام عمل حسب المحافظة.</li>
+        </ul>
+      </div>
+
+      <div class="tab-content" id="tab-howto" style="display: none">
+        <p>١- تأكدي إن شعرك ناشف تمامًا وممشط كويس قبل الاستخدام.</p>
+        <p>٢- شغّلي الجهاز وضبّطي درجة الحرارة المناسبة لنوع شعرك.</p>
+        <p>
+          ٣- خدي خصلة صغيرة، حطيها بين الألواح وابدئي من قريب من الجذور لحد
+          الأطراف بحركة ثابتة.
+        </p>
+        <p>
+          ٤- لو حابة تعملي تموّجات، لفي الجهاز خفيف عند الأطراف وامشي بالخصلة
+          لأسفل.
+        </p>
+      </div>
     </section>
 
-    <section id="for-who" class="container" aria-labelledby="for-who-title">
-      <h2 id="for-who-title" class="section-title">مناسب لمين؟</h2>
-      <div class="for-who">
-        <div class="card">
-          <h3 style="margin:0 0 12px;">مناسب لك لو:</h3>
-          <ul class="bullets" style="margin:0;">
-            <li><span class="bullet-dot"></span>عندك منتج رقمي أو خدمة وبتبيع من السوشيال ميديا.</li>
-            <li><span class="bullet-dot"></span>حاسس إنك تايه ومش منظم في المحتوى والمبيعات.</li>
-            <li><span class="bullet-dot"></span>عايز تمبلت يمشيك خطوة بخطوة بدل ما تجرّب عشوائي.</li>
+    <!-- Features section -->
+    <section class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">✨</div>
+        <div class="feature-title">نتيجة ناعمة وسريعة</div>
+        <div class="feature-text">
+          ألواح سيراميك تساعدك تحصلي على فرد انسيابي في أقل وقت.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💧</div>
+        <div class="feature-title">حماية للشعر</div>
+        <div class="feature-text">
+          توزيع حرارة متساوي يقلل احتمال حرق الأطراف أو تقصفها.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <div class="feature-title">سلك دوّار 360°</div>
+        <div class="feature-text">
+          راحة أكبر في الحركة أثناء التصفيف بدون تشابك السلك.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👜</div>
+        <div class="feature-title">خفيفة ومناسبة للسفر</div>
+        <div class="feature-text">
+          وزنها خفيف وحجمها مناسب إنك تاخديها معاكي في أي مكان.
+        </div>
+      </div>
+    </section>
+
+    <!-- Related products (placeholder) -->
+    <section class="related-section">
+      <h2 class="related-title">منتجات قد تعجبك أيضًا</h2>
+      <div class="related-grid">
+        <div class="related-card">
+          <div class="related-img">
+            <img
+              src="https://via.placeholder.com/300x300?text=Product+1"
+              alt="Related product 1"
+            />
+          </div>
+          <div class="related-badges">
+            <span class="badge-sale">Save 1,000</span>
+            <span class="badge-new">NEW</span>
+          </div>
+          <div class="related-name">Ceramic Straightener</div>
+          <div>
+            <span class="related-price">2,500 EGP</span>
+            <span class="related-old-price">4,000 EGP</span>
+          </div>
+          <button class="related-cta">Add to Cart</button>
+        </div>
+
+        <div class="related-card">
+          <div class="related-img">
+            <img
+              src="https://via.placeholder.com/300x300?text=Product+2"
+              alt="Related product 2"
+            />
+          </div>
+          <div class="related-badges">
+            <span class="badge-sale">Save 1,560</span>
+            <span class="badge-new">NEW</span>
+          </div>
+          <div class="related-name">Smooth Brush</div>
+          <div>
+            <span class="related-price">2,340 EGP</span>
+            <span class="related-old-price">3,900 EGP</span>
+          </div>
+          <button class="related-cta">Add to Cart</button>
+        </div>
+
+        <div class="related-card">
+          <div class="related-img">
+            <img
+              src="https://via.placeholder.com/300x300?text=Product+3"
+              alt="Related product 3"
+            />
+          </div>
+          <div class="related-badges">
+            <span class="badge-sale">Save 1,867</span>
+            <span class="badge-new">NEW</span>
+          </div>
+          <div class="related-name">Super Dryer Brush</div>
+          <div>
+            <span class="related-price">2,333 EGP</span>
+            <span class="related-old-price">4,200 EGP</span>
+          </div>
+          <button class="related-cta">Add to Cart</button>
+        </div>
+
+        <div class="related-card">
+          <div class="related-img">
+            <img
+              src="https://via.placeholder.com/300x300?text=Product+4"
+              alt="Related product 4"
+            />
+          </div>
+          <div class="related-badges">
+            <span class="badge-sale">Save 1,278</span>
+            <span class="badge-new">NEW</span>
+          </div>
+          <div class="related-name">Slim Ceramic Straightener</div>
+          <div>
+            <span class="related-price">2,222 EGP</span>
+            <span class="related-old-price">3,500 EGP</span>
+          </div>
+          <button class="related-cta">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-top">
+        <div>
+          <div class="footer-title">عن البراند</div>
+          <p>
+            بنقدّم أدوات تصفيف شعر عملية وسهلة الاستخدام عشان تاخدي لوك صالون من
+            غير ما تخرجي من البيت.
+          </p>
+        </div>
+        <div>
+          <div class="footer-title">تعرفي علينا</div>
+          <ul>
+            <li><a href="#">من نحن</a></li>
+            <li><a href="#">المدونة</a></li>
+            <li><a href="#">سياسة الاسترجاع</a></li>
+            <li><a href="#">الخصوصية</a></li>
           </ul>
         </div>
-        <div class="card">
-          <h3 style="margin:0 0 12px;">مش مناسب لك لو:</h3>
-          <ul class="bullets" style="margin:0;">
-            <li><span class="bullet-dot"></span>لسه مش عارف هتبيع إيه أصلاً.</li>
-            <li><span class="bullet-dot"></span>مش ناوي تطبّق أو تشتغل على التيمبليت.</li>
-            <li><span class="bullet-dot"></span>مش بتستخدم السوشيال ميديا في البيع.</li>
+        <div>
+          <div class="footer-title">معلومات</div>
+          <ul>
+            <li><a href="#">حسابي</a></li>
+            <li><a href="#">تتبع الطلب</a></li>
+            <li><a href="#">تواصل معنا</a></li>
           </ul>
         </div>
-      </div>
-    </section>
-
-    <section id="testimonials" class="container" aria-labelledby="testimonials-title">
-      <h2 id="testimonials-title" class="section-title">آراء العملاء</h2>
-      <div class="testimonials">
-        <div class="card">
-          <h3 style="margin:0 0 6px;">محمد – صانع محتوى</h3>
-          <p style="margin:0; color:#4b5563;">التيمبليت نظّم أفكاري وخلي المحتوى مربوط بالمبيعات، المبيعات زادت أول شهر.</p>
-        </div>
-        <div class="card">
-          <h3 style="margin:0 0 6px;">سارة – مدربة أونلاين</h3>
-          <p style="margin:0; color:#4b5563;">مبقاش في لخبطة، كل حاجة متقسمة خطط وأفكار وبجد سهّل عليا التخطيط.</p>
-        </div>
-        <div class="card">
-          <h3 style="margin:0 0 6px;">أحمد – مسوّق حر</h3>
-          <p style="margin:0; color:#4b5563;">تابعت المبيعات وعرفت إيه اللي بيبيع، التيمبليت اداني نظام ألتزم بيه.</p>
+        <div>
+          <div class="footer-title">النشرة البريدية</div>
+          <p>سجلي بريدك عشان يوصلك كل العروض أول بأول.</p>
+          <div class="newsletter-input">
+            <input type="email" placeholder="ادخلي بريدك الإلكتروني" />
+            <button type="button">اشتراك</button>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section id="pricing" class="container" aria-labelledby="pricing-title">
-      <h2 id="pricing-title" class="section-title">سعر التيمبليت</h2>
-      <div class="card price-card">
-        <p class="price">٩٩ دولار</p>
-        <p style="margin:0 0 14px; color:#4b5563;">الوصول الكامل لـ HAAKS – Notion Template + أي تحديثات جاية مجانًا.</p>
-        <ul class="bullets" style="justify-content:center;">
-          <li><span class="bullet-dot"></span>شرح استخدام مختصر تطبق منه فورًا.</li>
-          <li><span class="bullet-dot"></span>نماذج محتوى وأفكار جاهزة للبوستات.</li>
-          <li><span class="bullet-dot"></span>صفحات متابعة مبيعات ونتايج.</li>
-        </ul>
-        <p style="margin:10px 0 18px; color:#111827; font-weight:700;">مش مجرد تمبلت… ده نظام تقدر تمشي عليه يوم بيوم.</p>
-        <a href="https://www.speedtest.net/" class="btn btn-primary" style="width:100%;">اشترِ الآن</a>
-        <p style="margin:12px 0 0; color:#6b7280; font-size:13px;">الدفع آمن – هيوصلك لينك التيمبليت فورًا على الإيميل بعد الدفع.</p>
+      <div class="footer-bottom">
+        <span>© Your Brand 2025 - All rights reserved.</span>
+        <span>Hotline: 16469 • WhatsApp: 01023444418</span>
       </div>
-    </section>
+    </footer>
+  </div>
 
-    <section id="faq" class="container" aria-labelledby="faq-title">
-      <h2 id="faq-title" class="section-title">الأسئلة الشائعة</h2>
-      <div class="faq-item">
-        <div class="faq-question">إزاي هستلم التيمبليت بعد الدفع؟</div>
-        <div class="faq-answer">هيوصلك لينك التيمبليت على الإيميل فورًا بعد الدفع مع خطوات سريعة لتشغيله.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">هل لازم أكون خبير في Notion عشان أستفيد؟</div>
-        <div class="faq-answer">لأ، التيمبليت بسيط ومعاه شرح يعرّفك تستخدم الصفحات خطوة بخطوة.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">هل أقدر أستخدم التيمبليت لأكتر من منتج؟</div>
-        <div class="faq-answer">أيوه، تقدر تضيف منتجات وخدمات مختلفة وتتابع كل حاجة من نفس النظام.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">هل أقدر أعدل على التيمبليت بطريقتي؟</div>
-        <div class="faq-answer">طبعًا، تقدر تعدل الصفحات والعناوين وتضيف أقسام تناسب شغلك.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">هل في تحديثات جاية؟ وإزاي هتوصلني؟</div>
-        <div class="faq-answer">أي تحديثات هتنزل هيوصلك بيها إيميل وتقدر تضيفها للتيمبليت بسهولة.</div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container" style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;">
-      <p style="margin:0;">© HAAKS – كل الحقوق محفوظة.</p>
-      <p style="margin:0;">لو عندك أي سؤال ابعت على: <a href="mailto:support@example.com">support@example.com</a></p>
-      <div style="display:flex; gap:12px;">
-        <a href="#">Instagram</a>
-        <a href="#">Twitter</a>
-        <a href="#">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
-
+  <!-- ====== JS (Tabs + Gallery + Quantity) ====== -->
   <script>
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-      item.querySelector('.faq-question').addEventListener('click', () => {
-        item.classList.toggle('active');
+    // Tabs
+    document.querySelectorAll(".tab-button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var tab = this.getAttribute("data-tab");
+        document
+          .querySelectorAll(".tab-button")
+          .forEach(function (b) { b.classList.remove("active"); });
+        this.classList.add("active");
+
+        document
+          .querySelectorAll(".tab-content")
+          .forEach(function (c) { c.style.display = "none"; });
+        document.getElementById("tab-" + tab).style.display = "block";
       });
     });
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(event) {
-        const targetId = this.getAttribute('href');
-        if (targetId.length > 1) {
-          event.preventDefault();
-          document.querySelector(targetId)?.scrollIntoView({ behavior: 'smooth' });
-        }
+    // Gallery thumbs
+    var mainImg = document.getElementById("main-product-image");
+    document.querySelectorAll(".thumb img").forEach(function (img) {
+      img.addEventListener("click", function () {
+        var full = this.getAttribute("data-full");
+        if (full) mainImg.src = full;
+        document
+          .querySelectorAll(".thumb")
+          .forEach(function (t) { t.classList.remove("active"); });
+        this.parentElement.classList.add("active");
+      });
+    });
+
+    // Quantity
+    var qtyInput = document.getElementById("quantity-input");
+    document.querySelectorAll("[data-qty]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var type = this.getAttribute("data-qty");
+        var current = parseInt(qtyInput.value || "1", 10);
+        if (type === "minus") current = Math.max(1, current - 1);
+        if (type === "plus") current = current + 1;
+        qtyInput.value = current;
       });
     });
   </script>
